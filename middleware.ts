@@ -28,6 +28,11 @@ export default auth((req) => {
     }
     return null;
   }
+  if (!isLoggedin && !isPublicRoute) {
+    return Response.redirect(new URL("/auth/login", nextUrl));
+  }
+
+  return null;
 });
 
 // Optionally, don't invoke Middleware on some paths
